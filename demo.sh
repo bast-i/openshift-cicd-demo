@@ -241,6 +241,9 @@ data:
 type: Opaque
 EOF
 
+# expose route from ArgoCD
+oc expose service argocd-demo-server -n $cicd_prj >/dev/null 2>/dev/null
+
   info "Wait for Argo CD route..."
 
   until oc get route argocd-demo-server -n $cicd_prj >/dev/null 2>/dev/null
